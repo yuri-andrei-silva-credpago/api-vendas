@@ -6,7 +6,7 @@ import { errors } from 'celebrate';
 import routes from './routes';
 import { Request, Response } from 'express-serve-static-core';
 import { NextFunction } from 'connect';
-import AppError from './errors/AppError';
+import AppError from '../errors/AppError';
 import '@shared/typeorm'
 
 const app = express();
