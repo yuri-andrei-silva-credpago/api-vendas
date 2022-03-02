@@ -8,11 +8,14 @@ import { Request, Response } from 'express-serve-static-core';
 import { NextFunction } from 'connect';
 import AppError from '../errors/AppError';
 import '@shared/typeorm'
+import uploadConfig from '@config/upload';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/files', express.static(uploadConfig.directory))
 
 app.use(routes);
 
