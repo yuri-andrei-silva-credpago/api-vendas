@@ -5,13 +5,13 @@ import { hash } from 'bcryptjs';
 import UsersRepository from "../typeorm/repositories/UsersRepository";
 import UserTokensRepository from "../typeorm/repositories/UserTokensRepository";
 
-interface IRquest {
+interface IRequest {
   token: string;
   password: string;
 }
 
 class ResetPasswordService {
-  public async execute({ token, password }: IRquest): Promise<void> {
+  public async execute({ token, password }: IRequest): Promise<void> {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const userTokensRepository = getCustomRepository(UserTokensRepository);

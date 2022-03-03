@@ -3,12 +3,12 @@ import { getCustomRepository } from "typeorm";
 import Product from "../typeorm/entities/Product";
 import { ProductRepository } from "../typeorm/repositories/ProductsRepository";
 
-interface IRquest {
+interface IRequest {
   id: string;
 }
 
 class ShowProductService {
-  public async execute({ id }: IRquest): Promise<Product> {
+  public async execute({ id }: IRequest): Promise<Product> {
 
     const productsRepository = getCustomRepository(ProductRepository);
 
