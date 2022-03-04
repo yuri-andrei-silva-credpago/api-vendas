@@ -1,13 +1,13 @@
-import Customer from "@modules/customers/typeorm/entities/Customer";
-import { CreateDateColumn, Entity, JoinColumn, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import OrdersProducts from "./OrdersProducts";
+import Customer from "@modules/customers/typeorm/entities/Customer";
 
 @Entity('orders')
 class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToMany(() => Customer)
+  @ManyToOne(() => Customer)
   @JoinColumn({name: 'customer_id'})
   customer: Customer;
 

@@ -1,5 +1,6 @@
-import OrdersProducts from '@modules/orders/typeorm/entites/OrdersProducts';
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import OrdersProducts from '@modules/orders/typeorm/entities/OrdersProducts';
+// src/modules/orders/typeorm/entites/OrdersProducts.ts
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity('products')
 class Product {
@@ -7,6 +8,7 @@ class Product {
   id: string;
 
   @OneToMany(() => OrdersProducts, order_products => order_products.product)
+  // @JoinColumn({ name: 'id' })
   order_products: OrdersProducts[];
 
   @Column()
