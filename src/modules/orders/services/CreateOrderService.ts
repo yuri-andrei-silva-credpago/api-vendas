@@ -1,4 +1,4 @@
-import CustomerRepository from "@modules/customers/infra/typeorm/repositories/CustomersRepository";
+import CustomersRepository from "@modules/customers/infra/typeorm/repositories/CustomersRepository";
 import { ProductRepository } from "@modules/products/infra/typeorm/repositories/ProductsRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
@@ -19,7 +19,7 @@ class CreateOrderService {
   public async execute({ customer_id, products }: IRequest): Promise<Order> {
 
     const ordersRepository = getCustomRepository(OrdersRepository);
-    const customersRepository = getCustomRepository(CustomerRepository);
+    const customersRepository = getCustomRepository(CustomersRepository);
     const productsRepository = getCustomRepository(ProductRepository);
 
     const customerExists = await customersRepository.findById(customer_id);
