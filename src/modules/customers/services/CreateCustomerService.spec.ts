@@ -17,7 +17,21 @@ describe('CreateCustomer', () => {
     expect(customer).toHaveProperty('id');
   });
 
-  it('should not be able to create two customers with the same e-mail', () => {
-    expect(1).toBe(1);
-  })
+  it('should not be able to create a customer with email existing', async () => {
+    const fakeCustomersRepository = new FakeCustomersRepository();
+
+    const createCustomer = new CreateCustomerService(fakeCustomersRepository);
+
+    await createCustomer.execute({
+      name: 'Jorge Henrique',
+      email: 'teste@gmail.com',
+    })
+
+    expect(
+      createCustomer.execute({
+          name: 'Jorge Henrique',
+          email: 'teste@gmail.com',
+        }),
+      ).rejects.toBeInstanceOf(AppError);
+    });
 })
