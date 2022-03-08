@@ -1,3 +1,9 @@
-it('should be 10', () => {
-  expect(5 + 5).toEqual(10);
+describe('CreateCustomer', () => {
+  it('should be able to create a new customer', () => {
+    expect(1).toBe(1);
+  });
+
+  it('should not be able to create two customers with the same e-mail', () => {
+    expect(1).toBe(2);
+  })
 })
